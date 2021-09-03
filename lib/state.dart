@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:getx/model.dart';
 
 class ReActive extends StatefulWidget {
   @override
@@ -7,14 +8,9 @@ class ReActive extends StatefulWidget {
 }
 
 class _ReActiveState extends State<ReActive> {
-  RxInt number = 1.obs;
-  RxString string = 'COUNT IS'.obs;
+  MyModel model = MyModel(number: 1.obs, string: 'the count is:'.obs);
   inc() {
-    number++;
-  }
-
-  lower() {
-    string.toLowerCase();
+    model.number++;
   }
 
   @override
@@ -32,11 +28,16 @@ class _ReActiveState extends State<ReActive> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Obx(() => Text(
-                  '$string $number',
+                  "${model.string} ${model.number.toString()}",
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
                 )),
-            OutlinedButton(
-                onPressed: () => lower(), child: Text('CLICK TO LOWER CASE'))
+            SizedBox(
+              height: 10,
+            ),
+            ElevatedButton(
+                onPressed: () =>
+                    model.string.value = model.string.value.toUpperCase(),
+                child: Text('CLICK TO UPPER CASE'))
           ],
         ),
       ),
