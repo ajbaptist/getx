@@ -12,4 +12,8 @@ class Name extends GetxController {
     model.obs.value.number++;
     print(model.number);
   }
+
+  cleanUp() {
+    print('SUCCESSFULLY CLEANED THIS CODE');
+  }
 }

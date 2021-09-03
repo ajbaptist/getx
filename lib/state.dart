@@ -14,7 +14,10 @@ class _ReActiveState extends State<ReActive> {
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
-        onPressed: () => name.inc(),
+        onPressed: () {
+          name.inc();
+          // inc();
+        },
         child: Icon(Icons.add),
       ),
       appBar: AppBar(
@@ -33,10 +36,30 @@ class _ReActiveState extends State<ReActive> {
             ),
             ElevatedButton(
                 onPressed: () => name.convertToUpperCase(),
-                child: Text('CLICK TO UPPER CASE'))
+                child: Text('CLICK TO UPPER CASE')),
+            SizedBox(
+              height: 20,
+            ),
+            GetBuilder<Name>(
+              initState: (data) => name.inc(),
+              dispose: (_) => name.cleanUp(),
+              builder: (context) {
+                return Obx(() => Text(
+                      context.model.string.value,
+                      style:
+                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    ));
+              },
+            )
           ],
         ),
       ),
     );
   }
 }
+
+// inc() {
+//   for (var i = 0; i < 10000; i++) {
+//     print(i);
+//   }
+// }
