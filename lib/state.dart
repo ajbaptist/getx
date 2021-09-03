@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:getx/model.dart';
+import 'package:getx/controller.dart';
 
 class ReActive extends StatefulWidget {
   @override
@@ -8,16 +8,13 @@ class ReActive extends StatefulWidget {
 }
 
 class _ReActiveState extends State<ReActive> {
-  MyModel model = MyModel(number: 1.obs, string: 'the count is:'.obs);
-  inc() {
-    model.number++;
-  }
+  Name name = Get.put(Name());
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
-        onPressed: inc,
+        onPressed: () => name.inc(),
         child: Icon(Icons.add),
       ),
       appBar: AppBar(
@@ -28,15 +25,14 @@ class _ReActiveState extends State<ReActive> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Obx(() => Text(
-                  "${model.string} ${model.number.toString()}",
+                  "${name.model.string} ${name.model.number}",
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
                 )),
             SizedBox(
               height: 10,
             ),
             ElevatedButton(
-                onPressed: () =>
-                    model.string.value = model.string.value.toUpperCase(),
+                onPressed: () => name.convertToUpperCase(),
                 child: Text('CLICK TO UPPER CASE'))
           ],
         ),
