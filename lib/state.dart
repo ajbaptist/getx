@@ -57,9 +57,3 @@ class _ReActiveState extends State<ReActive> {
     );
   }
 }
-
-// inc() {
-//   for (var i = 0; i < 10000; i++) {
-//     print(i);
-//   }
-// }

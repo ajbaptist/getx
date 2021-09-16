@@ -144,7 +144,14 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               ElevatedButton(
                   onPressed: () => Get.toNamed("/REACTIVE"),
-                  child: Text('REACTIVE STATE MANAGER'))
+                  child: Text('REACTIVE STATE MANAGER')),
+              SizedBox(
+                height: 10,
+              ),
+              ElevatedButton.icon(
+                  onPressed: () => Get.toNamed("/page"),
+                  icon: Icon(Icons.navigate_next_sharp),
+                  label: Text('API CALLS USING GETX')),
             ],
           ),
         ));
